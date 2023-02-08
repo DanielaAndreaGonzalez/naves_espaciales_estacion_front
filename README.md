@@ -1,3 +1,4 @@
+
 # proyecto-nave
 
 # estacion_espacial Front
@@ -31,3 +32,7 @@ Lista de tecnologías implementadas dentro del proyecto
 * Clonar el proyecto
 * Abrirlo con el editor de código de preferencia
 * Ejecutarlo con el back del proyecto https://github.com/DanielaAndreaGonzalez/estacion_espacial
+
+# naves_espaciales_estacion_front
+Proyecto en Framework Vue Js, el cual tiene como objetivo el uso de conceptos claves de la programación orientada a objetos . A través del cual se presentan tres(3) tipos de naves espaciales permitiendo crearlas y clasificarlas .
+
