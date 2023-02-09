@@ -11,6 +11,8 @@
             <h5 class="card-title">Vehiculo Lanzadera</h5>
             <p class="card-text">Nave tripulada con capacidad de tales y pacuales</p>
             <a @click="cambiarEstadoLanzadera()" class="btn btn-primary">Ver..</a>
+            <br><br>
+            <a @click="crearVehiculoLanzadera = !crearVehiculoLanzadera" class="btn btn-primary">Crear</a>
           </div>
         </div>
       </div>
@@ -22,6 +24,8 @@
             <h5 class="card-title">Nave Espacial No tripulada</h5>
             <p class="card-text">Nave tripulada con capacidad de tales y pacuales</p>
             <a class="btn btn-primary" @click="cambiarEstadoNoTripulada()">Ver..</a>
+            <br><br>
+            <a @click="crearVehiculoNoTripulado = !crearVehiculoNoTripulado" class="btn btn-primary">Crear</a>
           </div>
         </div>
       </div>
@@ -33,6 +37,8 @@
             <h5 class="card-title">Nave Espacial tripulada</h5>
             <p class="card-text">Nave tripulada con capacidad de tales y pacuales</p>
             <a class="btn btn-primary" @click="cambiarEstadoTripulada()">Ver..</a>
+            <br><br>
+            <a @click="crearVehiculoTripulado = !crearVehiculoTripulado" class="btn btn-primary">Crear</a>
           </div>
         </div>     
       </div>
@@ -40,9 +46,8 @@
     
     <br>
     <br>
-    <div v-if="vehiculoLanzadera">      
-      <h4>Vehiculo Lanzadera</h4>             
-      
+    <div v-if="crearVehiculoLanzadera">
+      <h4>Vehiculo Lanzadera</h4>
         <input type="text" class="form-control my-3" name="nombrenave" id="nombrenave" placeholder="Ingrese nombre nave" v-model="nombreNave" title="Escribe el nombre de la nave">              
         <input type="text" class="form-control my-3" v-model="paisNave" placeholder="Ingrese país nave" title="Escribe el pais de la nave">
         <input type="date" class="form-control my-3" v-model="actividadNave" placeholder="Actividad nave" title="Escribe el inicio de la actividad">
@@ -55,8 +60,10 @@
         <input type="number" class="form-control my-3" v-model="potenciaNave" placeholder="Ingrese la potencia nave"  title="Escribe la potencia de la nave">
         <input type="text" class="form-control my-3" v-model="sistemaPropulsionNave" placeholder="Ingrese el sistema de propulsion"  title="Escribe el sistema de propulsión">
         <input type="text" class="form-control my-3" v-model="tipoCargaNave" placeholder="Carga" title="Escribe el tipo de carga">    
-        <button class="btn btn-primary" @click.prevent="enviarDatos()">Agregar</button>   
-        <br>
+        <button class="btn btn-primary" @click.prevent="enviarDatos()">Agregar</button>
+    </div>
+    <div v-if="vehiculoLanzadera">                       
+      <br>
       <br>
       <h3>Lista vehiculos lanzadera</h3>
       <input type="text" class="form-control my-3" v-model="busquedaNaveLanzadera" placeholder="Buscar.."  title="Buscar...">
@@ -97,7 +104,7 @@
       </table>   
     </div>
 
-    <div v-if="vehiculoNoTripulado">
+    <div v-if="crearVehiculoNoTripulado">
       <h4>Nave Espacial No tripulada</h4>
       <input type="text" class="form-control my-3" placeholder="Ingrese nombre nave" v-model="nombreNave" title="Escribe el nombre de la nave">
       <input type="text" class="form-control my-3" placeholder="Ingrese país nave" v-model="paisNave" title="Escribe el pais de la nave">
@@ -111,7 +118,8 @@
       <input type="text" class="form-control my-3" v-model="tipoEstudio" placeholder="Ingrese tipo de estudio" title="Escribe el tipo de estudio">
       
       <button class="btn btn-primary" @click.prevent="enviarDatosNoTripulada()">Agregar</button>
-
+    </div>
+    <div v-if="vehiculoNoTripulado">
       <br>
       <br>
       <h3>Lista naves Espaciales No Tripuladas</h3>
@@ -151,7 +159,7 @@
       </table>
     </div>
 
-    <div v-if="vehiculoTripulado">
+    <div v-if="crearVehiculoTripulado">
       <h4>Nave Espacial tripulada</h4>
       <input type="text" class="form-control my-3" placeholder="Ingrese nombre nave" v-model="nombreNave" title="Escribe el nombre de la nave">
       <input type="text" class="form-control my-3" placeholder="Ingrese país nave" v-model="paisNave" title="Escribe el pais de la nave">
@@ -163,7 +171,10 @@
       <input type="text" class="form-control my-3" v-model="tipoNave" placeholder="Ingrese tipo de la nave" title="Escribe el tipo de nave">
       <input type="number" class="form-control my-3" v-model="cantidadPersonas" placeholder="Ingrese capacidad de personas" title="Escribe la cantidad de personas">
       <input type="text" class="form-control my-3" v-model="tipoObjetivo" placeholder="Ingrese el objetivo de estudio" title="Escribe el tipo objetivo">      
-      <button class="btn btn-primary" @click.prevent="enviarDatosTripulada()">Agregar</button>      
+      <button class="btn btn-primary" @click.prevent="enviarDatosTripulada()">Agregar</button>
+    </div>
+
+    <div v-if="vehiculoTripulado">      
       <br>
       <br>
       <h3>Lista naves Espaciales Tripuladas</h3>
@@ -203,6 +214,7 @@
             </tbody>
       </table>
     </div>
+    
   </div>
 </template>
 
@@ -235,8 +247,11 @@ export default {
       busquedaNaveLanzadera: "",
       busquedaNaveNoTripulada : "",
       busquedaNaveTripulada: "",
+      crearVehiculoLanzadera:false,
       vehiculoLanzadera :false,
+      crearVehiculoTripulado: false,
       vehiculoTripulado:false,
+      crearVehiculoNoTripulado:false,
       vehiculoNoTripulado:false,
 
       navestripuladas: [],
