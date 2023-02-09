@@ -170,7 +170,17 @@
       <input type="number" class="form-control my-3" v-model="altoNave" placeholder="Ingrese alto de la nave" title="Escribe el alto">
       <input type="text" class="form-control my-3" v-model="tipoNave" placeholder="Ingrese tipo de la nave" title="Escribe el tipo de nave">
       <input type="number" class="form-control my-3" v-model="cantidadPersonas" placeholder="Ingrese capacidad de personas" title="Escribe la cantidad de personas">
-      <input type="text" class="form-control my-3" v-model="tipoObjetivo" placeholder="Ingrese el objetivo de estudio" title="Escribe el tipo objetivo">      
+      <!--<input type="text" class="form-control my-3" v-model="tipoObjetivo" placeholder="Ingrese el objetivo de estudio" title="Escribe el tipo objetivo">      -->
+
+      <div class="form-control my-3">
+            <select v-model="tipoObjetivo" class="form-control" id="tipoObjetivo">
+              <option disabled value="">Seleccione objeto estudio</option>
+                <option :value="tipoEstudios[0]">{{tipoEstudios[0]}}</option>
+                <option :value="tipoEstudios[1]">{{tipoEstudios[1]}}</option>
+                <option :value="tipoEstudios[2]">{{tipoEstudios[2]}}</option>
+            </select>
+      </div>
+  
       <button class="btn btn-primary" @click.prevent="enviarDatosTripulada()">Agregar</button>
     </div>
 
@@ -256,7 +266,8 @@ export default {
 
       navestripuladas: [],
       naveLanzadera:[],
-      navesNotripuladas:[]
+      navesNotripuladas:[],
+      tipoEstudios:["MISIONLUNAR","COMPORTAMIENTOHUMANO","MANTENIMIENTOSATELITES"],
      };
   },
 
