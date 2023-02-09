@@ -55,7 +55,16 @@
         <input type="text" class="form-control my-3" v-model="combustibleNave" placeholder="Ingrese combusible de la nave" title="Escribe el tipo de combustible">
         <input type="number" class="form-control my-3" v-model="pesoNave" placeholder="Ingrese peso de la nave" title="Escribe el peso">
         <input type="number" class="form-control my-3" v-model="altoNave" placeholder="Ingrese alto de la nave" title="Escribe el alto">
-        <input type="text" class="form-control my-3" v-model="tipoNave" placeholder="Ingrese tipo de la nave" title="Escribe el tipo de nave">
+        <!--<input type="text" class="form-control my-3" v-model="tipoNave" placeholder="Ingrese tipo de la nave" title="Escribe el tipo de nave">-->
+        <div class="form-control my-3">
+            <select v-model="tipoNaves" class="form-control" id="tipoNave">
+                <option disabled value="">Seleccione tipo nave</option>
+                <option :value="tipoNaves[0]">{{tipoNaves[0]}}</option>
+                <option :value="tipoNaves[1]">{{tipoNaves[1]}}</option>
+                <option :value="tipoNaves[2]">{{tipoNaves[2]}}</option>
+            </select>
+      </div>
+
         <input type="number" class="form-control my-3" v-model="capacidadNave" placeholder="Ingrese la capacidad de toneladas" title="Escribe la capacidad de carga">
         <input type="number" class="form-control my-3" v-model="potenciaNave" placeholder="Ingrese la potencia nave"  title="Escribe la potencia de la nave">
         <input type="text" class="form-control my-3" v-model="sistemaPropulsionNave" placeholder="Ingrese el sistema de propulsion"  title="Escribe el sistema de propulsión">
@@ -113,7 +122,15 @@
       <input type="text" class="form-control my-3" v-model="combustibleNave" placeholder="Ingrese combusible de la nave" title="Escribe el tipo de combustible">
       <input type="number" class="form-control my-3" v-model="pesoNave" placeholder="Ingrese peso de la nave" title="Escribe el peso">
       <input type="number" class="form-control my-3" v-model="altoNave" placeholder="Ingrese alto de la nave" title="Escribe el alto">
-      <input type="text" class="form-control my-3" v-model="tipoNave" placeholder="Ingrese tipo de la nave" title="Escribe el tipo de nave">
+     <!-- <input type="text" class="form-control my-3" v-model="tipoNave" placeholder="Ingrese tipo de la nave" title="Escribe el tipo de nave">-->
+      <div class="form-control my-3">
+            <select v-model="tipoNaves" class="form-control" id="tipoNave">
+                <option disabled value="">Seleccione tipo nave</option>
+                <option :value="tipoNaves[0]">{{tipoNaves[0]}}</option>
+                <option :value="tipoNaves[1]">{{tipoNaves[1]}}</option>
+                <option :value="tipoNaves[2]">{{tipoNaves[2]}}</option>
+            </select>
+      </div>
       <input type="number" class="form-control my-3" v-model="catidadMotores"  placeholder="Ingrese cantidad motores  de la nave" title="Escribe la cantidad de motores">
       <input type="text" class="form-control my-3" v-model="tipoEstudio" placeholder="Ingrese tipo de estudio" title="Escribe el tipo de estudio">
       
@@ -168,13 +185,22 @@
       <input type="text" class="form-control my-3" v-model="combustibleNave" placeholder="Ingrese combusible de la nave" title="Escribe el tipo de combustible">
       <input type="number" class="form-control my-3" v-model="pesoNave" placeholder="Ingrese peso de la nave" title="Escribe el peso">
       <input type="number" class="form-control my-3" v-model="altoNave" placeholder="Ingrese alto de la nave" title="Escribe el alto">
-      <input type="text" class="form-control my-3" v-model="tipoNave" placeholder="Ingrese tipo de la nave" title="Escribe el tipo de nave">
+     <!-- <input type="text" class="form-control my-3" v-model="tipoNave" placeholder="Ingrese tipo de la nave" title="Escribe el tipo de nave">-->
+      <div class="form-control my-3">
+            <select v-model="tipoNaves" class="form-control" id="tipoNave">
+                <option disabled value="">Seleccione tipo de nave</option>
+                <option :value="tipoNaves[0]">{{tipoNaves[0]}}</option>
+                <option :value="tipoNaves[1]">{{tipoNaves[1]}}</option>
+                <option :value="tipoNaves[2]">{{tipoNaves[2]}}</option>
+            </select>
+      </div>
+
       <input type="number" class="form-control my-3" v-model="cantidadPersonas" placeholder="Ingrese capacidad de personas" title="Escribe la cantidad de personas">
       <!--<input type="text" class="form-control my-3" v-model="tipoObjetivo" placeholder="Ingrese el objetivo de estudio" title="Escribe el tipo objetivo">      -->
 
       <div class="form-control my-3">
             <select v-model="tipoObjetivo" class="form-control" id="tipoObjetivo">
-              <option disabled value="">Seleccione objeto estudio</option>
+                <option disabled value="">Seleccione objeto estudio</option>
                 <option :value="tipoEstudios[0]">{{tipoEstudios[0]}}</option>
                 <option :value="tipoEstudios[1]">{{tipoEstudios[1]}}</option>
                 <option :value="tipoEstudios[2]">{{tipoEstudios[2]}}</option>
@@ -268,6 +294,7 @@ export default {
       naveLanzadera:[],
       navesNotripuladas:[],
       tipoEstudios:["MISIONLUNAR","COMPORTAMIENTOHUMANO","MANTENIMIENTOSATELITES"],
+      tipoNaves:["Vehiculo Lanzadera","Nave Espacial Tripulada","Nave Espacial No Tripulada"],
      };
   },
 
