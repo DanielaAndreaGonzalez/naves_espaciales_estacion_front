@@ -250,8 +250,8 @@ export default {
 
     btnbusquedaNaveLanzadera(){
       var nombre = this.busquedaNaveLanzadera;
-        //axios.get(`https://estacionespacialsofka.herokuapp.com/naves/buscarVehiculoLanzadera/${nombre}`)
-        axios.get(`http://localhost:8081/naves/buscarVehiculoLanzadera/${nombre}`)
+        axios.get(`https://navesespacialesestacion-production.up.railway.app/naves/buscarVehiculoLanzadera/${nombre}`)
+        //axios.get(`http://localhost:8081/naves/buscarVehiculoLanzadera/${nombre}`)
             .then(response => {
                 this.naveLanzadera =  response.data ;
             })
@@ -261,8 +261,8 @@ export default {
     },
     btnbusquedaNaveNoTripulada(){
       var nombre = this.busquedaNaveNoTripulada;
-        //axios.get(`https://estacionespacialsofka.herokuapp.com/naves/buscarNaveNoTripulada/${nombre}`)
-        axios.get(`http://localhost:8081/naves/buscarNaveNoTripulada/${nombre}`)
+        axios.get(`https://navesespacialesestacion-production.up.railway.app/naves/buscarNaveNoTripulada/${nombre}`)
+        //axios.get(`http://localhost:8081/naves/buscarNaveNoTripulada/${nombre}`)
             .then(response => {
                 this.navesNotripuladas =  response.data ;
             })
@@ -272,8 +272,8 @@ export default {
     },
     btnbusquedaNaveTripulada(){
       var nombre = this.busquedaNaveTripulada;
-        //axios.get(`https://estacionespacialsofka.herokuapp.com/naves/buscarNaveTripulada/${nombre}`)
-        axios.get(`http://localhost:8081/naves/buscarNaveTripulada/${nombre}`)
+        axios.get(`https://navesespacialesestacion-production.up.railway.app/naves/buscarNaveTripulada/${nombre}`)
+        //axios.get(`http://localhost:8081/naves/buscarNaveTripulada/${nombre}`)
             .then(response => {
                 this.navestripuladas =  response.data ;
             })
@@ -315,8 +315,8 @@ export default {
                 tipoCarga: this.tipoCargaNave,
       };
       console.log(parametrosNave)
-      //axios.post("https://estacionespacialsofka.herokuapp.com/naves/guardarVehiculoLanzadera", parametrosNave)
-      axios.post("http://localhost:8081/naves/guardarVehiculoLanzadera", parametrosNave)
+      axios.post("https://navesespacialesestacion-production.up.railway.app/naves/guardarVehiculoLanzadera", parametrosNave)
+      //axios.post("http://localhost:8081/naves/guardarVehiculoLanzadera", parametrosNave)
             .then(response => {
                 console.log(response.data);
                 this.listarDatos();
@@ -352,8 +352,8 @@ export default {
                 
       };
       console.log(parametrosNave)
-      //axios.post("https://estacionespacialsofka.herokuapp.com/naves/guardarNaveNoTripulada", parametrosNave)
-      axios.post("http://localhost:8081/naves/guardarNaveNoTripulada", parametrosNave)
+      axios.post("https://navesespacialesestacion-production.up.railway.app/naves/guardarNaveNoTripulada", parametrosNave)
+      //axios.post("http://localhost:8081/naves/guardarNaveNoTripulada", parametrosNave)
             .then(response => {
                 console.log(response.data);
                 this.listarDatosNoTripulada();
@@ -387,8 +387,8 @@ export default {
       };
       console.log(parametrosNave)
 
-      //axios.post("https://estacionespacialsofka.herokuapp.com/naves/guardarNaveTripulada", parametrosNave)
-      axios.post("http://localhost:8081/naves/guardarNaveTripulada", parametrosNave)
+      axios.post("https://navesespacialesestacion-production.up.railway.app/naves/guardarNaveTripulada", parametrosNave)
+      //axios.post("http://localhost:8081/naves/guardarNaveTripulada", parametrosNave)
             .then(response => {
                 console.log(response.data);
                 this.listarDatosTripulada();
@@ -408,8 +408,8 @@ export default {
                 });
     }, 
     listarDatosTripulada() {
-      //axios.get("https://estacionespacialsofka.herokuapp.com/naves/listarNaveTripulada")
-      axios.get("http://localhost:8081/naves/listarNaveTripulada")
+      axios.get("https://navesespacialesestacion-production.up.railway.app/naves/listarNaveTripulada")
+      //axios.get("http://localhost:8081/naves/listarNaveTripulada")
             .then(response => {
                 console.log(response.data);   
                 this.navestripuladas =  response.data ;
@@ -419,8 +419,8 @@ export default {
                 });
     },    
     listarDatosNoTripulada() {
-      //axios.get("https://estacionespacialsofka.herokuapp.com/naves/listarNaveNoTripulada")
-      axios.get("http://localhost:8081/naves/listarNaveNoTripulada")
+      axios.get("https://navesespacialesestacion-production.up.railway.app/naves/listarNaveNoTripulada")
+      //axios.get("http://localhost:8081/naves/listarNaveNoTripulada")
             .then(response => {
                 console.log(response.data);   
                 this.navesNotripuladas =  response.data ;
@@ -430,8 +430,8 @@ export default {
                 });
     }, 
     listarDatos() {
-      //axios.get("https://estacionespacialsofka.herokuapp.com/naves/listarVehiculoLanzadera")
-      axios.get("http://localhost:8081/naves/listarVehiculoLanzadera")
+      axios.get("https://navesespacialesestacion-production.up.railway.app/naves/listarVehiculoLanzadera")
+      //axios.get("http://localhost:8081/naves/listarVehiculoLanzadera")
             .then(response => {
                 console.log(response.data);   
                 this.naveLanzadera =  response.data ;
