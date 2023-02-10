@@ -1,5 +1,6 @@
 
 # proyecto-nave
+EXPLICACION VIDEO ENLACE YOUTUBE https://youtu.be/6MBxOb-W7qo 
 
 # estacion_espacial Front
 
