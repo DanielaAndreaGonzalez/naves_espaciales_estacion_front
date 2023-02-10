@@ -9,7 +9,7 @@
         <img src="../assets/Vehiculo-lanzadera.jpg" class="card-img-top" alt="img..." width="50" height="320">
           <div class="card-body">
             <h5 class="card-title">Vehiculo Lanzadera</h5>
-            <p class="card-text">Nave tripulada con capacidad de tales y pacuales</p>
+            <p class="card-text">cohete autopropulsado que sirve para lanzar una carga útil al espacio, normalmente un satélite artificial, una sonda o una nave tripulada</p>
             <a @click="cambiarEstadoLanzadera()" class="btn btn-primary">Ver..</a>
             <br><br>
             <a @click="crearLanzadera()" class="btn btn-primary">Crear</a>
@@ -22,7 +22,7 @@
         <img src="../assets/nvae-tripulada.jpg" class="card-img-top" alt="img..." width="50" height="320">
           <div class="card-body">
             <h5 class="card-title">Nave Espacial No tripulada</h5>
-            <p class="card-text">Nave tripulada con capacidad de tales y pacuales</p>
+            <p class="card-text">vehículo de transferencia automatizada (ATV) que sirve para abastecer, limpiar y regular periódicamente la elevación de la EEI.</p>
             <a class="btn btn-primary" @click="cambiarEstadoNoTripulada()">Ver..</a>
             <br><br>
             <a @click="crearNoTripulada()" class="btn btn-primary">Crear</a>
@@ -35,7 +35,7 @@
         <img src="../assets/Vehiculo-lanzadera.jpg" class="card-img-top" alt="img..." width="50" height="320">
           <div class="card-body">
             <h5 class="card-title">Nave Espacial tripulada</h5>
-            <p class="card-text">Nave tripulada con capacidad de tales y pacuales</p>
+            <p class="card-text">Envia seres humanos al espacio para tareas de reparación, mantenimiento o investigación, en misiones donde se precisa de la destreza </p>
             <a class="btn btn-primary" @click="cambiarEstadoTripulada()">Ver..</a>
             <br><br>
             <a @click="crearTripulada()" class="btn btn-primary">Crear</a>
