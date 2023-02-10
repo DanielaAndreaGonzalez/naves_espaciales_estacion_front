@@ -12,7 +12,7 @@
             <p class="card-text">Nave tripulada con capacidad de tales y pacuales</p>
             <a @click="cambiarEstadoLanzadera()" class="btn btn-primary">Ver..</a>
             <br><br>
-            <a @click="crearVehiculoLanzadera = !crearVehiculoLanzadera" class="btn btn-primary">Crear</a>
+            <a @click="crearLanzadera()" class="btn btn-primary">Crear</a>
           </div>
         </div>
       </div>
@@ -25,7 +25,7 @@
             <p class="card-text">Nave tripulada con capacidad de tales y pacuales</p>
             <a class="btn btn-primary" @click="cambiarEstadoNoTripulada()">Ver..</a>
             <br><br>
-            <a @click="crearVehiculoNoTripulado = !crearVehiculoNoTripulado" class="btn btn-primary">Crear</a>
+            <a @click="crearNoTripulada()" class="btn btn-primary">Crear</a>
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@
             <p class="card-text">Nave tripulada con capacidad de tales y pacuales</p>
             <a class="btn btn-primary" @click="cambiarEstadoTripulada()">Ver..</a>
             <br><br>
-            <a @click="crearVehiculoTripulado = !crearVehiculoTripulado" class="btn btn-primary">Crear</a>
+            <a @click="crearTripulada()" class="btn btn-primary">Crear</a>
           </div>
         </div>     
       </div>
@@ -257,28 +257,28 @@
 <script>
 const axios = require('axios');
 export default {
-  mounted() {
-    
-  },
+  /**
+   * Declarar variables
+   */
   data: function() {
      return {
-        name: "HelloWorld",
-        nombreNave: "",
-        paisNave: "",
-        actividadNave: "",
-        velocidadNave : "",
-        combustibleNave: "",
-        pesoNave: "",
-        altoNave: "",
-        tipoNave: "",
-        capacidadNave: "",
-        potenciaNave: "",
-        sistemaPropulsionNave: "",
-        tipoCargaNave: "",
-        catidadMotores:"",
-        tipoEstudio:"",
-        cantidadPersonas: "",
-        tipoObjetivo:"",
+      name: "HelloWorld",
+      nombreNave: "",
+      paisNave: "",
+      actividadNave: "",
+      velocidadNave : "",
+      combustibleNave: "",
+      pesoNave: "",
+      altoNave: "",
+      tipoNave: "",
+      capacidadNave: "",
+      potenciaNave: "",
+      sistemaPropulsionNave: "",
+      tipoCargaNave: "",
+      catidadMotores:"",
+      tipoEstudio:"",
+      cantidadPersonas: "",
+      tipoObjetivo:"",
 
       busquedaNaveLanzadera: "",
       busquedaNaveNoTripulada : "",
@@ -297,14 +297,55 @@ export default {
       tipoNaves:["Vehiculo Lanzadera","Nave Espacial Tripulada","Nave Espacial No Tripulada"],
      };
   },
-
-
   methods: {
 
+    /**
+     * Hace el llamado de la lista de vehiculo lanzadera
+     */
+    listarDatos() {
+      axios.get("https://navesespacialesestacion-production.up.railway.app/naves/listarVehiculoLanzadera")
+            .then(response => {
+                console.log(response.data);   
+                this.naveLanzadera =  response.data ;
+            })
+            .catch(error => {    
+              console.log(error)            
+                });
+    },
+
+    /**
+     * Hace el llamado de la lista de vehiculos nave tripulada
+     */
+    listarDatosTripulada() {
+      axios.get("https://navesespacialesestacion-production.up.railway.app/naves/listarNaveTripulada")
+            .then(response => {
+                console.log(response.data);   
+                this.navestripuladas =  response.data ;
+            })
+            .catch(error => {    
+              console.log(error)            
+                });
+    },   
+    /**
+     * Hace el llamado de la lista de vehiculo naves no tripulada
+     */ 
+    listarDatosNoTripulada() {
+      axios.get("https://navesespacialesestacion-production.up.railway.app/naves/listarNaveNoTripulada")
+            .then(response => {
+                console.log(response.data);   
+                this.navesNotripuladas =  response.data ;
+            })
+            .catch(error => {    
+              console.log(error)            
+                });
+    },
+
+    /**
+     * Busca registros de nave lanzadera por coincidencia en el nombre
+     */
     btnbusquedaNaveLanzadera(){
       var nombre = this.busquedaNaveLanzadera;
         axios.get(`https://navesespacialesestacion-production.up.railway.app/naves/buscarVehiculoLanzadera/${nombre}`)
-        //axios.get(`http://localhost:8081/naves/buscarVehiculoLanzadera/${nombre}`)
             .then(response => {
                 this.naveLanzadera =  response.data ;
             })
@@ -312,6 +353,10 @@ export default {
               console.log(error)            
             });
     },
+
+    /**
+     * Busca registros de nave no tripulada por coincidencia en el nombre
+     */
     btnbusquedaNaveNoTripulada(){
       var nombre = this.busquedaNaveNoTripulada;
         axios.get(`https://navesespacialesestacion-production.up.railway.app/naves/buscarNaveNoTripulada/${nombre}`)
@@ -323,6 +368,10 @@ export default {
               console.log(error)            
             });
     },
+
+    /**
+     * Busca registros de nave no tripulada por coincidencia en el nombre
+     */
     btnbusquedaNaveTripulada(){
       var nombre = this.busquedaNaveTripulada;
         axios.get(`https://navesespacialesestacion-production.up.railway.app/naves/buscarNaveTripulada/${nombre}`)
@@ -334,25 +383,11 @@ export default {
               console.log(error)            
             });
     },
-    cambiarEstadoLanzadera(){
-      this.listarDatos();
-      this.vehiculoLanzadera = true;      
-      this.vehiculoTripulado=false,
-      this.vehiculoNoTripulado=false      
-    },
-    cambiarEstadoNoTripulada(){
-      this.listarDatosNoTripulada();
-      this.vehiculoLanzadera = false;      
-      this.vehiculoTripulado=false,
-      this.vehiculoNoTripulado=true      
-    },
-    cambiarEstadoTripulada(){
-      this.listarDatosTripulada();
-      this.vehiculoLanzadera = false;      
-      this.vehiculoTripulado=true,
-      this.vehiculoNoTripulado=false      
-    },
-    enviarDatos() {
+
+     /**
+     * Guarda registro de vehiculo lanzadera
+     */
+     enviarDatos() {
       const parametrosNave = {
                 nombre: this.nombreNave,                   
                 pais: this.paisNave,
@@ -369,7 +404,6 @@ export default {
       };
       console.log(parametrosNave)
       axios.post("https://navesespacialesestacion-production.up.railway.app/naves/guardarVehiculoLanzadera", parametrosNave)
-      //axios.post("http://localhost:8081/naves/guardarVehiculoLanzadera", parametrosNave)
             .then(response => {
                 console.log(response.data);
                 this.listarDatos();
@@ -390,7 +424,11 @@ export default {
               console.log(error)            
                 });
     },
-    enviarDatosNoTripulada() {
+
+    /**
+     * Guarda registro de nave no tripulada
+     */
+     enviarDatosNoTripulada() {
       const parametrosNave = {
                 nombre: this.nombreNave,                   
                 pais: this.paisNave,
@@ -406,7 +444,6 @@ export default {
       };
       console.log(parametrosNave)
       axios.post("https://navesespacialesestacion-production.up.railway.app/naves/guardarNaveNoTripulada", parametrosNave)
-      //axios.post("http://localhost:8081/naves/guardarNaveNoTripulada", parametrosNave)
             .then(response => {
                 console.log(response.data);
                 this.listarDatosNoTripulada();
@@ -425,6 +462,10 @@ export default {
               console.log(error)            
                 });
     },
+
+    /**
+     * Guardar registro de nave tripulada
+     */
     enviarDatosTripulada() {
       const parametrosNave = {
                 nombre: this.nombreNave,                   
@@ -438,10 +479,7 @@ export default {
                 cantidadPersonas: this.cantidadPersonas,
                 tipoObjetivo: this.tipoObjetivo
       };
-      console.log(parametrosNave)
-
       axios.post("https://navesespacialesestacion-production.up.railway.app/naves/guardarNaveTripulada", parametrosNave)
-      //axios.post("http://localhost:8081/naves/guardarNaveTripulada", parametrosNave)
             .then(response => {
                 console.log(response.data);
                 this.listarDatosTripulada();
@@ -459,41 +497,64 @@ export default {
             .catch(error => {    
               console.log(error)            
                 });
-    }, 
-    listarDatosTripulada() {
-      axios.get("https://navesespacialesestacion-production.up.railway.app/naves/listarNaveTripulada")
-      //axios.get("http://localhost:8081/naves/listarNaveTripulada")
-            .then(response => {
-                console.log(response.data);   
-                this.navestripuladas =  response.data ;
-            })
-            .catch(error => {    
-              console.log(error)            
-                });
-    },    
-    listarDatosNoTripulada() {
-      axios.get("https://navesespacialesestacion-production.up.railway.app/naves/listarNaveNoTripulada")
-      //axios.get("http://localhost:8081/naves/listarNaveNoTripulada")
-            .then(response => {
-                console.log(response.data);   
-                this.navesNotripuladas =  response.data ;
-            })
-            .catch(error => {    
-              console.log(error)            
-                });
-    }, 
-    listarDatos() {
-      axios.get("https://navesespacialesestacion-production.up.railway.app/naves/listarVehiculoLanzadera")
-      //axios.get("http://localhost:8081/naves/listarVehiculoLanzadera")
-            .then(response => {
-                console.log(response.data);   
-                this.naveLanzadera =  response.data ;
-            })
-            .catch(error => {    
-              console.log(error)            
-                });
-    }
-      
+    },
+
+    
+
+    /**
+     * Metodos de validacion 
+     */
+    crearLanzadera(){
+      this.crearVehiculoLanzadera=true,
+      this.crearVehiculoTripulado= false,
+      this.crearVehiculoNoTripulado=false,
+      this.vehiculoLanzadera = false;      
+      this.vehiculoTripulado=false,
+      this.vehiculoNoTripulado=false
+    },
+    cambiarEstadoLanzadera(){
+      this.listarDatos();
+      this.vehiculoLanzadera = true;      
+      this.vehiculoTripulado=false,
+      this.vehiculoNoTripulado=false,
+      this.crearVehiculoLanzadera=false,
+      this.crearVehiculoTripulado= false,
+      this.crearVehiculoNoTripulado=false  
+    },
+    crearNoTripulada(){
+      this.crearVehiculoLanzadera=false,
+      this.crearVehiculoTripulado= false,
+      this.crearVehiculoNoTripulado=true,
+      this.vehiculoLanzadera = false;      
+      this.vehiculoTripulado=false,
+      this.vehiculoNoTripulado=false
+    },
+    cambiarEstadoNoTripulada(){
+      this.listarDatosNoTripulada();
+      this.vehiculoLanzadera = false;      
+      this.vehiculoTripulado=false,
+      this.vehiculoNoTripulado=true,
+      this.crearVehiculoLanzadera=false,
+      this.crearVehiculoTripulado= false,
+      this.crearVehiculoNoTripulado=false      
+    },
+    crearTripulada(){
+      this.crearVehiculoLanzadera=false,
+      this.crearVehiculoTripulado= true,
+      this.crearVehiculoNoTripulado=false,
+      this.vehiculoLanzadera = false;      
+      this.vehiculoTripulado=false,
+      this.vehiculoNoTripulado=false
+    },
+    cambiarEstadoTripulada(){
+      this.listarDatosTripulada();
+      this.vehiculoLanzadera = false;      
+      this.vehiculoTripulado=true,
+      this.vehiculoNoTripulado=false, 
+      this.crearVehiculoLanzadera=false,
+      this.crearVehiculoTripulado= false,
+      this.crearVehiculoNoTripulado=false     
+    } 
   },
   props: {
     msg: String,
